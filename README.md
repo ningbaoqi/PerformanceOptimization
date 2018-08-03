@@ -4,3 +4,4 @@
 ### [稳定性优化](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-wendingxing.md)
 ### [耗电优化](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-haodian.md)
 ### [稳定性优化](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-wendingxing.md)
+### [安装包大小优化](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-anzhuangbao.md)
