@@ -12,3 +12,65 @@
 |`include标签`|将可复用的组件抽取出来并通过`include`标签使用；作用：将共同的组件抽取出来单独放在一个xml文件中，然后使用`include标签`导入公共布局，效果：提高UI的制作和复用效率，也能保证制作的UI布局更加规整和易维护|
 |`merge标签`|`使用merge标签减少布局的嵌套层次`，作用：合并UI布局，使用该标签能降低UI布局的嵌套层次；场景一：布局根节点是`FrameLayout`且不需要设置`background`或`padding`等属性时，可以使用`merge`代替；场景二：某布局作为子布局被其他布局`include`时，使用`merge`当作该布局的顶节点，这样在被引入时顶节点会自动被忽略；merge只能用在布局xml文件的根元素，不能在ViewStub中使用marge标签；使用merge来加载一个布局时，必须指定一个ViewGroup作为其父元素，并且要设置加载的attachToRoot参数为true；|
 |`ViewStub标签`|使用ViewStub标签来加载一些不常用的布局，作用：`ViewStub标签同include标签一样用来引入一个外部布局`，不同的是，`ViewStub引入布局默认不会扩张，也就是不会显示，既不会占用显示也不会占用位置`，从而在解析layout时节省cpu和内存；ViewStub只能加载一次，之后ViewStub对象会被置为空，ViewStub只能用来加载一个布局文件，而不是某个具体的View，不能嵌套Merge标签|
+
+#### 使用merge标签    
+##### res/layout/main.xml
+```
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/merge"/>
+    </FrameLayout>
+</LinearLayout>
+```
+##### res/layout/merge.xml
+```
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    />
+</merge>
+```
+##### Activity
+```
+public class ViewStubActvitiy extends AppCompatActivity {
+    private ViewStub viewStub;
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.viewstub);
+        viewStub = (ViewStub) findViewById(R.id.viewstub);
+    }
+    public void click(View view) {//使ViewStub解析，就可以显示在屏幕上了
+        viewStub.inflate();
+    }
+}
+```
+##### res/layout/viewstub.xml
+```
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="click"
+        android:text="click"/>
+    <ViewStub
+        android:id="@+id/viewstub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout="@layout/listview_item"/>
+</LinearLayout>
+```
