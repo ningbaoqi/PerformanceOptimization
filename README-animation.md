@@ -14,3 +14,7 @@
 //对某个Window进行硬件加速
 getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
 ```
+##### view
+```
+view.setLayerType(View.LAYER_TYPE_SOFTWARE,null);//对单独的View控制硬件加速
+```
