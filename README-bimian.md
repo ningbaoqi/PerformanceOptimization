@@ -12,3 +12,4 @@
 |深红|每个像素多绘制了4或更多次|
 
 #### 避免过度绘制
++ 移除`XML`中非必须的背景，或按需设置；移除window默认的背景；按需显示占位背景图片；`this.getWindow().setBackgroundDrawable(null);`设置`DecorView`背景为空;
