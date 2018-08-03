@@ -30,3 +30,24 @@
 |内存大；使用OpenGL的接口至少需要8MB内存|
 
 + 所以是否使用硬件加速，需要考虑一些接口是否支持硬件加速，同时结合产品的形态和平台，如TV版本就不需要考虑功耗的问题，而且TV屏幕大，使用硬件加速容易实现更好的显示效果；
+
+
+##### 系统层
++ `真正把需要显示的数据渲染到屏幕上，是通过系统级进程中的SurfaceFlinger服务来实现的`；该服务主要做的工作如下；
+
+|SurfaceFlinger服务的主要工作|
+|------|
+|`响应客户端事件`，创建Layer与客户端的Surface建立链接|
+|`接收客户端数据及属性`，修改Layer属性，如尺寸、颜色、透明度等|
+|`将创建的Layer内容刷新到屏幕上`|
+|`维持Layer的序列`，并对Layer最终输出做出裁剪计算|
+
++ 既然是两个不同进程，那么肯定需要一个跨进程的通信机制来完成数据传输，`在Android的显示系统，使用了Android的匿名共享内存，ShardClient，每一个应用和SurfaceFlinger之间都会创建一个SharedClient`，如图所示；
+
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/pic-4.jpg)
+
++ 在每一个`SharedClient`中，`最多可以创建31个SharedBufferStack`，`每个Surface都对应一个SharedBufferStack，也就是一个window`；`一个SharedClient对应一个Android应用程序，而一个Android应用程序可能包含多个窗口，即Surface，也就是说SharedClient包含的是SharedBufferStack的集合，因为最多可以创建31个SharedBufferStack，也就意味着一个Android应用程序最多可以包含31个窗口`，同时每个SharedBufferStack中又包含了两个（低于4.1版本）或三个（4.1及版本以上）缓冲区，即在后面的显示刷新机制中会提到的`双缓冲`和`三重缓冲技术`；最后总结起来显示整体流程分为三个模块，`应用层绘制到缓冲区`，`SurfaceFlinger把缓冲区数据渲染到屏幕上`，`由于是两个不同的进程，所以使用Android的匿名共享内存SharedClient缓存需要显示的数据来达到目的`；
+
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/pic-5.jpg)
+
++ 绘制过程首先是`CPU准备数据`，`通过Driver层把数据交给GPU渲染`，`其中CPU主要负责Measure、Layout、Record、Execute的数据计算工作`，`GPU（图形处理器）负责Rasterization(栅格化)、渲染`。由于图形API不允许CPU直接与GPU通信，而是`通过中间的一个图形驱动层`来连接这两部分；`图形驱动维护了一个队列`，`CPU把display list添加到队列中，GPU从这个队列取出数据进行绘制，最终才在显示屏幕上显示出来`；
