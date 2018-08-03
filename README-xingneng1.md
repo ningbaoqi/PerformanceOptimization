@@ -3,7 +3,7 @@
 
 ![image](![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/pic-2.jpg))
 
-+ 打开Profile GPU Rendering后可以看到实时刷新的彩色图，每一根竖线表示一帧，由多个颜色组成，不同颜色的解释如下；
++ 打开Profile GPU Rendering后可以看到实时刷新的彩色图，每一根竖线表示一帧，由多个颜色组成，不同颜色的解释；
 
 |不同颜色的解释|
 |------|
