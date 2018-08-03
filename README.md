@@ -3,3 +3,4 @@
 ### [存储优化](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-cunchu.md)
 ### [稳定性优化](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-wendingxing.md)
 ### [耗电优化](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-haodian.md)
+### [稳定性优化](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-wendingxing.md)
