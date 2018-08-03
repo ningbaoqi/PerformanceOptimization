@@ -9,3 +9,8 @@
 |`void onConfigurationChanged(Configuration newConfig)`|系统配置发生变化时调用|
 |`void onLowMemory()`|系统低内存时调用|
 |`void onTrimMemory(int level)`|系统要求应用释放内存时调用|
+
+|启动方式|说明|
+|------|------|
+|冷启动|因为系统会重新创建一个新的进程分配给它，所以会先创建和初始化Application类，再创建和初始化MainActivity，最后显示在界面上|
+|热启动|因为会从有的进程中启动，所以热启动不会再创建和初始化Application，而是直接创建和初始化MainActivity|
