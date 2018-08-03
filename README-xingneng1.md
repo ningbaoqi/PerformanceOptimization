@@ -1,7 +1,7 @@
 ### 卡顿检测工具Profile GPU Rendering
 + `从应用层绘制一个页面（View），主要有三个过程：CPU准备数据、GPU从数据缓存列表中获取数据、Display设备绘制`；
 
-![image](![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/pic-2.jpg))
+![image](![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/pic-7.jpg))
 
 + 打开Profile GPU Rendering后可以看到实时刷新的彩色图，每一根竖线表示一帧，由多个颜色组成，不同颜色的解释；
 
