@@ -2,3 +2,4 @@
 ### [Android系统显示原理](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-xianshi.md)
 ### [性能分析工具](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-xingneng.md)
 ### [布局优化](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-youhuabuju.md)
+### [避免过度绘制](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-bimian.md)
