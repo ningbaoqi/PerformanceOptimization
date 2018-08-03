@@ -1,2 +1,11 @@
 ### 应用的启动流程
 + `APK文件可能运行在一个独立的进程中，也有可能产生多个进程，还可以多个APK运行在同一个进程中`；`每个应用只对应一个Application对象，并且启动应用一定会产生一个Application对象`；`一般在开发中都会创建一个继承于系统Application的类实现一些功能，如一些数据库的创建、模块的初始化等`；`启动Application时，系统会创建一个PID，即进程ID，所有的Activity都会在此进程上运行，在Application创建时初始化全局变量，同一个应用的所有Acivity都可以取到这个全局变量的值`；`尽量使用Application中的Context，因为Activity中的Context可能会导致内存泄露`；
+
+|Application中的方法|说明|
+|------|------|
+|`void attachBaseContext(Context base)`|得到应用上下文的Context，在应用创建时首先调用|
+|`void onCreate()`|应用创建时调用，晚于上面方法|
+|`void onTerminate()`|应用结束时调用|
+|`void onConfigurationChanged(Configuration newConfig)`|系统配置发生变化时调用|
+|`void onLowMemory()`|系统低内存时调用|
+|`void onTrimMemory(int level)`|系统要求应用释放内存时调用|
