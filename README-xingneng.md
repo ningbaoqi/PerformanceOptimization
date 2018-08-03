@@ -11,3 +11,4 @@
 
 ### [卡顿检测工具Profile GPU Rendering](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-xingneng1.md)
 ### [分析函数调用过程工具TraceView](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-xingneng2.md)
+### [Systrace UI性能分析](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-Systrace.md)
