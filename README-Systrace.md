@@ -12,3 +12,5 @@ setContentView(R.layout.activity_main);
 textView = findViewById(R.id.text);
 Trace.endSection();
 ```
+
++ Systrace分析，Alerts一栏标记了性能有问题的点，单击该点可以查看详细信息，Frame：每个应用都有一行专门显示frame，每一帧就显示为一个绿色的圆圈，当显示为黄色或者红色时，它的渲染时间超过了16.6ms；
