@@ -5,3 +5,4 @@
 ### [避免过度绘制](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-bimian.md)
 ### [合理的刷新机制](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-shuaxin.md)
 ### [提升动画性能](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-animation.md)
+### [卡顿监控方案与实现](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-animation1.md)
