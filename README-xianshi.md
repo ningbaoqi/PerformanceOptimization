@@ -5,3 +5,13 @@
 #### 绘制原理
 
 + `绘制任务是由应用层发起的，最终通过系统层绘制到硬件屏幕上`，也就是说，`应用进程绘制好后，通过跨进程通信机制把需要显示的数据传到系统层，有系统层中的SurfaceFlinger服务绘制到屏幕上`；
+
+##### 应用层
+
++ UI界面的典型构成框架如下；
+
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/pic-2.jpg)
+
++ 在Android的每个View绘制中有三个核心的步骤；
+
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/pic-3.jpg)
