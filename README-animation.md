@@ -1,2 +1,7 @@
 ### 提升动画性能
 + 优先使用属性动画->补间动画->帧动画;
+#### 硬件加速
+##### Application
+```
+<application android:hardwareAccelerated="true"/>//整个应用全局使用硬件加速
+```
