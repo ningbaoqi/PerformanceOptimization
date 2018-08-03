@@ -9,3 +9,8 @@
 ```
 <activity android:hardwareAccelerated="true"/>//单个Activity使用硬件加速
 ```
+##### Window
+```
+//对某个Window进行硬件加速
+getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+```
