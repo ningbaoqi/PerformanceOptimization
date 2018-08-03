@@ -11,3 +11,14 @@ startMethodTracing("ningbaoqi");
 textView.setText("dasdadasdasdasdasdas");
 stopMethodTracing();
 ```
+
+|TraceView参数面板字段含义|说明|
+|------|------|
+|Name|所有的调用项，展开可以看到有的有Parent和Children子项，指被调用和调用|
+|Inclusive|统计函数本身运行的时间 + 调用子函数运行的时间|
+|incl|inclusive时间占总时间的百分比|
+|Exclusive|同级函数本身运行的时间|
+|Excl|执行占总时间的百分比|
+|Calls+Recur Calls/Total|该方法调用次数+递归次数|
+|Cpu Time/Call|该方法耗时|
+|Real Time/Call|实际时长|
