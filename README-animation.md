@@ -5,3 +5,7 @@
 ```
 <application android:hardwareAccelerated="true"/>//整个应用全局使用硬件加速
 ```
+##### Activity
+```
+<activity android:hardwareAccelerated="true"/>//单个Activity使用硬件加速
+```
