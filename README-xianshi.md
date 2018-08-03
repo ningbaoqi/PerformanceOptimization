@@ -51,3 +51,15 @@
 ![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/pic-5.jpg)
 
 + 绘制过程首先是`CPU准备数据`，`通过Driver层把数据交给GPU渲染`，`其中CPU主要负责Measure、Layout、Record、Execute的数据计算工作`，`GPU（图形处理器）负责Rasterization(栅格化)、渲染`。由于图形API不允许CPU直接与GPU通信，而是`通过中间的一个图形驱动层`来连接这两部分；`图形驱动维护了一个队列`，`CPU把display list添加到队列中，GPU从这个队列取出数据进行绘制，最终才在显示屏幕上显示出来`；
+
+#### 到底绘制一个单元多长时间才是合理的？
++ `FPS（Frames Per Second）：表示每秒传递的帧数`，在理想情况下，`60FPS就感觉不到卡，这意味着每次绘制时长应该在16ms以内`；
+
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/pic-6.jpg)
+
++ `Android系统每隔16ms发出VSYNC信号，触发对UI进行渲染，如果每次渲染都成功，这样就能够达到流畅的画面所需的60FPS，即为了实现60FPS，就意味着程序的大多数绘制操作都必须在16ms内完成`；`如果某个操作花费的时间是24ms，系统在得到VSYNC信号时无法进行正常渲染，这样就发生了丢帧现象，那么用户在32ms内看到的会是同一帧画面`，主要场景在`执行动画`或者`滑动ListView`时更容易感知到卡顿不流畅，是因为这里的操作相对复杂，容易发生丢帧的现象，从而感觉卡顿，`很多原因可以导致CPU或者GPU负载过重从而出现丢帧现象`；`可能是Layout太复杂，无法在16ms内完成渲染`，`可能是UI上有层叠太多的绘制单元`，`还有可能是动画执行的次数过多`；`最终的数据是刷新机制通过系统去刷新数据，刷新不及时也是引起卡顿的一个主要原因`；
+
+|从Android系统的显示原理来看，影响绘制的根本原因有以下两个方面|
+|------|
+|绘制任务太重，绘制一帧内容耗时太长|
+|主线程太忙了，导致VSYNC信号来时还没有准备好数据导致丢帧|
