@@ -1,6 +1,8 @@
 ### Android卡顿介绍
 + Android应用卡顿场景可以分成4类，`UI绘制、应用启动、界面跳转、事件响应`；如下如：
 
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/pic-1.jpg)
+
 + 这四种卡顿场景的根本原因有可以分为两个大类；
 
 |卡顿场景的根本|
