@@ -7,3 +7,4 @@
 + SQLite的优点：多线程访问数据、需要事务处理、应用程序需要处理需要变化的复杂数据结构、数据库对于创建他们的包套件是私有的；
 #### [ContentProvider]()
 + ContentProvider是为了其他的应用程序访问本应用数据的对外的接口；
+### [序列化](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-xuliehua.md)
