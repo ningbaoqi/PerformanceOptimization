@@ -1,3 +1,5 @@
 ### 存储优化
 #### SharedPreferences
 + SharedPreferences的缺点是：只能存储boolean、int、float、long、string五种简单的数据类型；
+#### 文件存储
++ 内存存储空间内的文件默认只有创建文件的应用可以访问，而外部存储所有应用都可以访问；内部存储在应用卸载后，数据一起也删除；外部存储在有的设备上可以移除，所以使用外部存储需要判断是否已经挂载；应用默认安装在内部存储中，但是可以在AndroidManifest中指定android:installLocation属性来使应用安装到外部存储空间；
