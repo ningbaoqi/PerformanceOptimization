@@ -1,6 +1,6 @@
 ### 存储优化
 #### [SharedPreferences]()
-+ SharedPreferences的缺点是：只能存储boolean、int、float、long、string五种简单的数据类型；
++ SharedPreferences的缺点是：只能存储boolean、int、float、long、string五种简单的数据类型；每一次commit和apply操作都是一次i/o写操作，i/o操作是最慢的操作之一，在主线程中操作会导致主线程缓慢；editor的commit或apply方法区别是同步写入和异步写入；最好的优化方式就是避免频繁的读写SharedPreferences；建议使用apply方法提交批量提交；`不能跨进程同步`；`不能跨进程读写数据`；`存储SharedPreference的文件过大问题，会造成界面卡顿`；
 #### [文件存储]()
 + 内存存储空间内的文件默认只有创建文件的应用可以访问，而外部存储所有应用都可以访问；内部存储在应用卸载后，数据一起也删除；外部存储在有的设备上可以移除，所以使用外部存储需要判断是否已经挂载；应用默认安装在内部存储中，但是可以在AndroidManifest中指定android:installLocation属性来使应用安装到外部存储空间；
 #### [SQLite]()
