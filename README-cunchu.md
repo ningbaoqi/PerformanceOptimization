@@ -5,7 +5,7 @@
 + 内存存储空间内的文件默认只有创建文件的应用可以访问，而外部存储所有应用都可以访问；内部存储在应用卸载后，数据一起也删除；外部存储在有的设备上可以移除，所以使用外部存储需要判断是否已经挂载；应用默认安装在内部存储中，但是可以在AndroidManifest中指定android:installLocation属性来使应用安装到外部存储空间；
 #### [SQLite]()
 + SQLite的优点：多线程访问数据、需要事务处理、应用程序需要处理需要变化的复杂数据结构、数据库对于创建他们的包套件是私有的；数据库的操作都比较耗时，一定放在异步线程中，使用回调或者监听方式更新；
-##### [使用SQLiteStatement]()
+##### [一、使用SQLiteStatement]()
 ```
     SQLiteStatement sqLiteStatement;
 
@@ -33,6 +33,28 @@
         getSQLiteStatement().bindString(2, info.getContactName());
         getSQLiteStatement().bindString(3, info.getContactNum());
         return getSQLiteStatement().executeInsert() > 0;
+    }
+```
+##### [二、使用事务]()
+```
+    /**
+     * 显式使用事务可以大大的提高系统的性能
+     * 原子提交：意味着数据库的当次事务所有修改只有两个结果，所有修改都完成或者什么都没做，事务提交不会产生部分提交的结果，从而保证数据的同步
+     * 性能更好：可以非常明显的提高插入时间
+     * 事务是可以嵌套的：并且只有调用了setTransactionSuccessful方法，事务才会成功提交完成
+     */
+    public void useTransaction() {
+        getSqliteDB().beginTransaction();
+        try {
+            for (int i = 0; i < 10000; i++) {
+                //插入数据库
+            }
+            getSqliteDB().setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            getSqliteDB().endTransaction();
+        }
     }
 ```
 #### [ContentProvider]()
