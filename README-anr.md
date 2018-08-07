@@ -1,6 +1,6 @@
 ### ANR剖析
 #### [ANR介绍]()
-+ ANR即应用无响应，应用发生ANR有几种类型；
++ ANR即应用无响应，在默认情况下在一个`Activity`当中最长的执行时间是`5秒`，如果超过了`5秒`没有做出响应，就会报出`ANR异常`；在`BroadcastReceiver`中最长的执行时间是`10秒`;在主线程中进行了耗时操作，就会导致`ANR`弹框；应用发生ANR有几种类型；
 
 |发生ANR的集中类型|说明|
 |-------|-------|
@@ -25,7 +25,7 @@
 + ANR日志文件/data/anr/traces.txt;在AndroidStudio上提供了一个分析trace文件的工具，AnalyzeStacktrace,AnalyzeStacktrace可以更直观的分析导致ANR的原因，在AndroidStudio的工具栏中，选择Analyze->Analyze Stacktrace，打开Analyze Stacktrace工具窗口，将trace.txt中的内容复制到窗口，单击Normalize按钮，生成Thread Dump列表，左边为所有线程列表，右边为选中线程的具体信息；如果某个线程被标红，说明此线程被阻塞了，然后在右边的详细信息中查看阻塞的具体原因；
 #### [ANR监控]()
 ```
-  /**
+    /**
      * 因为导致ANR发送消息不能得到执行，所有根据这一特点就可以收集ANR
      * @param x
      */
