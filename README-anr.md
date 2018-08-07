@@ -40,3 +40,7 @@
         }
     }
 ```
+#### [造成ANR的主要原因]()
++ 应用程序的`响应性`是由`Activity Manager`和`Window Manager`系统服务监视的；当监视到太长的耗时操作，将会弹出`ANR`的对话框；造成`ANR`的主要原因：一：`主线程被IO操作(从Android4.0以后网络IO不允许在主线程中阻塞)`；二：`主线程中存在耗时的计算`；`Activity`的所有生命周期回调都是执行在`主线程中`的；`Service`默认是执行在`主线程`的；`BroadcastReceiver`的`onReceive()`回调时执行在`主线程`中的；没有使用`子线程`的`Looper`的`Handler`的`handleMessage()、post(Runnable)`是执行在`主线程`中的；`AsyncTask`的回调中除了`doInBackground()`其他都是执行在`主线程`中的；
+#### [如何解决ANR]()
++ 一：可以在`AsyncTask`中处理`耗时操作`；二：使用`Thread`或者`HandlerThread`提高优先级；三、使用`Handler`来处理工作线程的`耗时任务`；四：在`Activity`的`onCreate()`和`onResume()`回调中`尽量避免耗时`的代码；
