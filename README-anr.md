@@ -23,3 +23,20 @@
 |CPU usage|CPU的使用情况，在日志中CPU usage有两个时间点，第一个是发生ANR前的CPU使用情况，第二个是发生ANR后的CPU使用情况；如果CPU使用量很少，说明主线程可能阻塞，如果IOWwait很高，说明ANR有可能是由于主线程进行耗时的IO操作造成的|
 
 + ANR日志文件/data/anr/traces.txt;在AndroidStudio上提供了一个分析trace文件的工具，AnalyzeStacktrace,AnalyzeStacktrace可以更直观的分析导致ANR的原因，在AndroidStudio的工具栏中，选择Analyze->Analyze Stacktrace，打开Analyze Stacktrace工具窗口，将trace.txt中的内容复制到窗口，单击Normalize按钮，生成Thread Dump列表，左边为所有线程列表，右边为选中线程的具体信息；如果某个线程被标红，说明此线程被阻塞了，然后在右边的详细信息中查看阻塞的具体原因；
+#### [ANR监控]()
+```
+  /**
+     * 因为导致ANR发送消息不能得到执行，所有根据这一特点就可以收集ANR
+     * @param x
+     */
+    public void println(String x) {
+        if (startTime <= 0) {
+            startTime = System.currentTimeMillis();//发送消息，同时启动线程保存状态
+            mLogPrinter.onStartLoop();
+        } else {
+            long endTime = System.currentTimeMillis();//执行消息，同时复位ANR线程状态
+            execuTime(x, startTime, endTime);
+            startTime = 0;
+        }
+    }
+```
