@@ -22,7 +22,7 @@
 
 + 系统杀进程的规则如下：进程优先级设置为PERSISTENT_PROC_ADJ被杀概率较低，进程优先级HEAVY_WEIGHT_APP_ADJ这种是Activity仅次于主进程，系统认为是高权重进程；前台进程FOREGROUND_APP_ADJ不会被杀掉；当Activity、Service的生命周期发生变化时都会调整进程的优先级；进程中没有任何Activityd存在会优先被杀；空进程最容易被杀；
 
-#### [利用SyncAdapter提高进程优先级]()
+#### [利用SyncAdapter提高进程优先级](https://github.com/ningbaoqi/PerformanceOptimization/commit/c82442229949722d96985e89f9efba2e22ac5688)
 
 |提高进程优先级使应用在后台的存活时间更长的几种方法|说明|
 |------|------|
