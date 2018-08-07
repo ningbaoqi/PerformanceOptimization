@@ -21,3 +21,5 @@
 |PID|发生ANR的进程，系统在此时会生成trace文件，当前的时间点也是发生ANR的具体时间，以及生成trace文件的时间|
 |Reason|当前ANR的类型以及导致ANRs的原因|
 |CPU usage|CPU的使用情况，在日志中CPU usage有两个时间点，第一个是发生ANR前的CPU使用情况，第二个是发生ANR后的CPU使用情况；如果CPU使用量很少，说明主线程可能阻塞，如果IOWwait很高，说明ANR有可能是由于主线程进行耗时的IO操作造成的|
+
++ ANR日志文件/data/anr/traces.txt;在AndroidStudio上提供了一个分析trace文件的工具，AnalyzeStacktrace,AnalyzeStacktrace可以更直观的分析导致ANR的原因，在AndroidStudio的工具栏中，选择Analyze->Analyze Stacktrace，打开Analyze Stacktrace工具窗口，将trace.txt中的内容复制到窗口，单击Normalize按钮，生成Thread Dump列表，左边为所有线程列表，右边为选中线程的具体信息；如果某个线程被标红，说明此线程被阻塞了，然后在右边的详细信息中查看阻塞的具体原因；
