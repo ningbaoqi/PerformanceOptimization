@@ -19,3 +19,5 @@
 |SERVICE_B_ADJ=9|不活跃的进程|
 |HIDDEN_APP_MIN_ADJ=15|缓存进程，空进程，在内存不足的情况下会被优先杀掉|
 |UNKNOWN_ADJ=16|最低级别进程，只有缓存的进程，才有可能设置成这个级别|
+
++ 系统杀进程的规则如下：进程优先级设置为PERSISTENT_PROC_ADJ被杀概率较低，进程优先级HEAVY_WEIGHT_APP_ADJ这种是Activity仅次于主进程，系统认为是高权重进程；前台进程FOREGROUND_APP_ADJ不会被杀掉；当Activity、Service的生命周期发生变化时都会调整进程的优先级；进程中没有任何Activityd存在会优先被杀；空进程最容易被杀；
