@@ -27,3 +27,5 @@
 |Mobile_radio|是否开启Radio|
 |Wake_reason|被唤醒的原因|
 |Phone_in_call|是否进行通话|
+
+### [三大模块省电优化](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-sanda.md)
