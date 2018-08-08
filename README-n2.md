@@ -23,3 +23,9 @@
 + 堆转储显示在捕获堆转储时应用程序正在使用内存的对象;特别是在扩展用户会话之后,堆转储可以通过显示仍然在内存中的对象来帮助识别内存泄漏。捕获堆转储后可以查看:应用程序分配了哪些类型的对象,以及每个对象的数量;每个对象使用多少内存;每个对象的引用被保留在你的代码中;调用堆栈，用于分配对象的位置(只有在记录分配时捕获堆转储);
 
 ![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/a10.jpg)
+
++ 要捕获堆转储，单击Memory-Profiler工具栏中的dump Java堆;在转储堆时，Java内存的数量可能会暂时增加。这是正常的，因为堆转储发生在与应用程序相同的进程中，需要一些内存来收集数据;浏览列表以查找具有异常大堆计数的对象，因为它可能会被泄露。为了帮助查找已知类，请单击类名列标题以按字母顺序排序。然后单击类名。实例视图窗格出现在右边，显示该类的每个实例;在Instance View窗格中，单击一个实例。 References选项卡显示在下面，显示对该对象的所有引用。或者单击实例名称旁边的箭头以查看其所有字段，然后单击字段名称以查看其所有引用。如果要查看某个字段的实例详细信息，请右键单击该字段，然后选择Go to Instance;在References选项卡中，如果识别可能是内存泄漏的引用，请右键单击它，然后选择Go to Instance.。这将从堆转储中选择相应的实例，显示您自己的实例数据;默认情况下，堆转储不会显示每个已分配对象的堆栈跟踪。要获取堆栈跟踪，您必须在单击转储Java堆之前开始记录内存分配;如果您这样做，您可以在实例视图中选择一个实例，并在References选项卡旁边看到Call Stack选项卡;
+
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/a11.jpg)
+
++ Heap Count: 堆中的实例数;Shallow Size: 此堆中所有实例的总大小(以字节为单位);Retained Size: 这个类的所有实例(以字节为单位)保留的内存总大小;Default heap: 当系统没有指定堆时;App heap: 应用程序分配内存的主堆;Image heap: 系统引导映像，包含在引导期间预加载的类。这里的分配保证永远不会移动或离开;Zygote heap: Android系统中分发应用程序进程的写时复制堆;Depth：从任何GC根到所选实例的跳数最短;Shallow Size：此实例的大小;Retained Size：此实例支配的内存大小;
