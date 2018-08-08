@@ -27,3 +27,8 @@
 + 显示您所选择的时间框架和线程的方法跟踪数据;仅当您记录至少一个方法跟踪后，此窗格才会显示。在此窗格中，您可以选择如何查看每个堆栈跟踪以及如何测量执行时间;
 ##### [四、Buttom Up]()
 + 选择显示为Top Down tree, Bottom Up tree, Call Chart, or Flame Chart这些类型的图;Wall clock time:表示实际经过时间;Thread time:计时信息表示实际的消耗时间减去不消耗CPU资源的那段时间的任何部分;
+
+##### [使用Call Chart选项卡检查跟踪]()
++ Call Chart选项卡提供一个方法跟踪的图形表示，其中一个方法调用(或调用者)的周期和时间在水平轴上表示，而它的callees则显示在垂直轴上。对系统api的方法调用以橙色显示，调用您的应用程序自己的方法以绿色显示，方法调用第三方api(包括java语言api)以蓝色显示;
+
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/a2.jpg)
