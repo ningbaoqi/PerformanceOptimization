@@ -1,17 +1,3 @@
 ### 内存分析工具 Android Profiler
 + View->Tool Windows ->Android Profiler打开该工具；
-#### [CPU分析器CPU Profiler]()
-+ CPU分析器可实时检查应用程序的CPU使用情况和线程活动，并记录方法跟踪;
-
-![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/cpu1.jpg)
-
-##### [一、Event timeline]()
-+ 显示应用程序在其生命周期中转换不同状态的活动,并指示用户与设备的交互，包括屏幕旋转事件;
-##### [二、CPU timeline]()
-+ 显示应用程序的实时CPU使用率（占总可用CPU的百分比）以及应用程序使用的线程总数;时间轴还显示其他进程的CPU使用情况（如系统进程或其他应用程序）;
-##### [三、Thread activity timeline]()
-+ 列出属于您的应用程序进程的每个线程,并使用不同的颜色在时间轴上指示其活动;绿色: 线程处于活动状态或准备好使用CPU。也就是说，它处于”运行”或”可运行”状态;黄色： 线程处于活动状态，但是在完成其工作之前，它正在等待I / O操作（如文件或网络I / O）;灰色： 线程正在睡眠，不会消耗任何CPU时间，当线程需要访问尚未可用的资源时，有时会发生这种情况。要么线程进入自愿性睡眠，要么内核使线程休眠，直到所需的资源可用;
-##### [四、Tracing type]()
-+ Sampled： 在应用程序执行期间，可以频繁地捕获应用程序的调用堆栈;profiler将捕获的数据集进行比较，以获取关于应用程序代码执行的时间和资源使用信息;Instrumented:在应用程序运行时记录每个方法调用的开始和结束时的时间戳,收集时间戳并与生成方法跟踪数据进行比较，包括时间信息和CPU使用;
-##### [五、Record button]()
-+ 开始和停止记录方法跟踪;
+#### [CPU分析器CPU Profiler](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-n1.md)
