@@ -18,3 +18,12 @@
 + 记录方法跟踪,选择Sampled或Instrumented类型,单击Record开始进行记录，完成后点击Stop recording停止记录;profiler自动选择记录的时间帧，并在方法跟踪窗格中显示它的跟踪信息;
 
 ![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/a1.jpg)
+
+##### [一、Selected time frame]()
++ 在跟踪窗格中检查的记录时间框架的部分;第一次记录一个方法跟踪时，CPU分析器将自动选择您在CPU时间线中记录的整个长度;如果要检查仅记录的时间帧的一部分的方法跟踪数据，您可以单击并拖动高亮显示区域的边缘来修改它的长度;
+##### [二、Timestamp]()
++ 表示记录方法跟踪的开始和结束时间;
+##### [三、Trace pane]()
++ 显示您所选择的时间框架和线程的方法跟踪数据;仅当您记录至少一个方法跟踪后，此窗格才会显示。在此窗格中，您可以选择如何查看每个堆栈跟踪以及如何测量执行时间;
+##### [四、Buttom Up]()
++ 选择显示为Top Down tree, Bottom Up tree, Call Chart, or Flame Chart这些类型的图;Wall clock time:表示实际经过时间;Thread time:计时信息表示实际的消耗时间减去不消耗CPU资源的那段时间的任何部分;
