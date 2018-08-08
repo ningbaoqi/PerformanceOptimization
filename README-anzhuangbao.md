@@ -11,3 +11,9 @@
 |classes.dex|Java可执行程序|
 |proguard.cfg|代码混淆配置文件|
 |resources.arsc|记录资源文件和资源ID之间的映射关系，用来根据资源ID寻找资源|
+
+#### [减少安装包大小的常用方案]()
+
+|减少安装包大小的常用方案|
+|-------|
+|[代码混淆](http://proguard.sourceforge.net/manual/usage.html#classspecification)：压缩，移除无效的类，属性，方法等；优化，移除没用的结构；混淆：把类名、属性名、方法名替换为一到两个字母|
