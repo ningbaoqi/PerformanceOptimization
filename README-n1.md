@@ -16,3 +16,5 @@
 + 开始和停止记录方法跟踪;
 #### 记录和检查方法跟踪
 + 记录方法跟踪,选择Sampled或Instrumented类型,单击Record开始进行记录，完成后点击Stop recording停止记录;profiler自动选择记录的时间帧，并在方法跟踪窗格中显示它的跟踪信息;
+
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/a1.jpg)
