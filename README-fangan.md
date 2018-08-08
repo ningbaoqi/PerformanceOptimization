@@ -22,3 +22,28 @@ private void acquirWakeLock(Context context) {
     }
 }
 ```
+
+|Android中的WakeLock类型|说明|
+|------|------|
+|PARTIAL_WAKE_LOCK|保持CPU正常运转，屏幕和键盘灯有可能会关闭|
+|SCREEN_DIM_WAKE_LOCK|保持CPU运转，允许保持屏幕显示但是有可能变暗，允许关闭键盘灯|
+|SCREEN_BRIGHT_WAKE_LOCK|保持CPU运转，允许保持屏幕高亮显示，允许关闭键盘灯|
+|FULL_WAKE_LOCK|保持CPU运转，保持屏幕高亮显示，键盘灯也保持亮度|
+|ACQUIRE_CAUSES_WAKEUP|强制使屏幕亮起，这种锁主要用于一些必须通知用户的操作|
+|ON_AFTER_RELEASE|当锁被释放时，保持屏幕亮起一段时间|
+
+```
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+```
+
+```
+/**
+ * 释放WakeLock
+ */
+private void releaseWakeLock() {
+    if (lock != null) {
+        lock.release();
+        lock = null;
+    }
+}
+```
