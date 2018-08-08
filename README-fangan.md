@@ -65,50 +65,49 @@ private void releaseWakeLock() {
 |可以批量执行的任务|
 
 ```
-    private JobScheduler jobScheduler = null;
+private JobScheduler jobScheduler = null;
+/**
+ * 创建JobScheduler
+ *
+ * @param context
+ */
+public void JobSchedulerManager(Context context) {
+    jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+}
 
-    /**
-     * 创建JobScheduler
-     *
-     * @param context
-     */
-    public void JobSchedulerManager(Context context) {
-        jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+/**
+ * 创建一个JobInfo，描述一个任务的执行ID，以及触发这个任务的条件
+ * JobInfo参数说明：任务ID，添加任务时，对不同的ID做不同的触发条件，即用switch代码实现；在执行时需要根据任务ID执行具体的任务；ComponentName是具体执行JobScheduler任务的服务
+ * JobInfo支持的触发条件： setMinimumLatency 设置任务的延迟执行时间与setPeriodic方法不兼容，同时调用会发生异常
+ *                      setOverrideDeadline 设置任务最晚的延迟时间与setPeriodic方法不兼容，同时调用会发生异常
+ *                      setPersisted 设置重启之后，任务是否还需要继续执行
+ *                      setRequiredNetworkType 只有满足指定的网络条件下，才会被执行： NETWORK_TYPE_NONE不管是否有网络，这个任务都会被执行，是默认值
+ *                                                                              NETWORK_TYPE_ANY 只有在网络的情况下，任务才可以执行，和网络类型无关
+ *                                                                              NETWORK_TYPE_UNMETERED 非运营商网络时任务才会被执行 如wifi
+ *                      setRequiresCharging 只有在设备充电时，这个任务才会被执行
+ *                      setRequiresDeviceIdle 只有当用户没有在使用该设备且有一段时间没有使用时，才会启动该任务
+ * @param task_id
+ * @return
+ */
+public boolean addJobScheduleTask(int task_id) {
+    JobInfo.Builder builder = new JobInfo.Builder(task_id, new ComponentName("packagebane", JobSchedulerService.class.getName()));
+    switch (task_id) {
+        case 1:
+            builder.setPeriodic(1000);
+            break;
+        case 2:
+            builder.setPersisted(false);
+            break;
+        default:
+            builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED);
+            break;
     }
-
-    /**
-     * 创建一个JobInfo，描述一个任务的执行ID，以及触发这个任务的条件
-     * JobInfo参数说明：任务ID，添加任务时，对不同的ID做不同的触发条件，即用switch代码实现；在执行时需要根据任务ID执行具体的任务；ComponentName是具体执行JobScheduler任务的服务
-     * JobInfo支持的触发条件： setMinimumLatency 设置任务的延迟执行时间与setPeriodic方法不兼容，同时调用会发生异常
-     *                      setOverrideDeadline 设置任务最晚的延迟时间与setPeriodic方法不兼容，同时调用会发生异常
-     *                      setPersisted 设置重启之后，任务是否还需要继续执行
-     *                      setRequiredNetworkType 只有满足指定的网络条件下，才会被执行： NETWORK_TYPE_NONE不管是否有网络，这个任务都会被执行，是默认值
-     *                                                                              NETWORK_TYPE_ANY 只有在网络的情况下，任务才可以执行，和网络类型无关
-     *                                                                              NETWORK_TYPE_UNMETERED 非运营商网络时任务才会被执行 如wifi
-     *                      setRequiresCharging 只有在设备充电时，这个任务才会被执行
-     *                      setRequiresDeviceIdle 只有当用户没有在使用该设备且有一段时间没有使用时，才会启动该任务
-     * @param task_id
-     * @return
-     */
-    public boolean addJobScheduleTask(int task_id) {
-        JobInfo.Builder builder = new JobInfo.Builder(task_id, new ComponentName("packagebane", JobSchedulerService.class.getName()));
-        switch (task_id) {
-            case 1:
-                builder.setPeriodic(1000);
-                break;
-            case 2:
-                builder.setPersisted(false);
-                break;
-            default:
-                builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED);
-                break;
-        }
-        if (jobScheduler != null) {
-            return jobScheduler.schedule(builder.build()) > 0;
-        } else {
-            return false;
-        }
+    if (jobScheduler != null) {
+        return jobScheduler.schedule(builder.build()) > 0;
+    } else {
+        return false;
     }
+}
 ```
 ```
 <service android:name=".JobSchedulerService"
