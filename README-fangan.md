@@ -146,3 +146,13 @@ public class JobSchedulerService extends JobService {
     }
 }
 ```
+#### [Doze模式]()
++ Doze模式是通过限制应用访问网络以及其他一些操作的频率，来减少CPU的开销，达到省电的目的，在Android6.0系统上，只满足两个条件就会进入Doze模式：未连接电源；屏幕关闭；
+
+|Doze模式下维护的状态机|说明|
+|------|------|
+|ACTIVE|手机设备处于激活活动状态，设备在使用或者在充电中|
+|INACTIVE|刚脱离ACTIVE状态，进入非活动状态，关闭屏幕并没有充电|
+|IDLE_PENDING|IDLE预备状态，准备进入IDLE状态，在每隔30min让应用进入等待空闲预备状态|
+|IDLE|设备进入空闲状态|
+|IDLE_MAINTENANCE|处理挂起任务，在此状态可以执行在INACTIVE态挂起的任务(如闹钟或JobSchedule任务)|
