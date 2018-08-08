@@ -29,3 +29,4 @@
 |Phone_in_call|是否进行通话|
 
 ### [三大模块省电优化](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-sanda.md)
+### [应用常用优化方案](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/README-fangan.md)
