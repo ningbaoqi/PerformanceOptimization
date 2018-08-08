@@ -32,3 +32,16 @@
 + Call Chart选项卡提供一个方法跟踪的图形表示，其中一个方法调用(或调用者)的周期和时间在水平轴上表示，而它的callees则显示在垂直轴上。对系统api的方法调用以橙色显示，调用您的应用程序自己的方法以绿色显示，方法调用第三方api(包括java语言api)以蓝色显示;
 
 ![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/a2.jpg)
+
+##### [使用火焰图表(Flame Chart)选项卡检查痕迹]()
++ 火焰图选项卡提供了一个反向调用图表，聚合了相同的调用堆栈;横轴表示每个方法执行的相对时间;方法D对B(B1、B2和B3)进行多次调用，其中一些调用B对C(C1和C3)进行调用;
+
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/a3.jpg)
+
++ 因为B1、B2和B3共享相同的序列调用者(A→D→B)聚合,如下所示。同样,C1和C3聚合,因为它们共享相同的序列调用者(A→D→B→C)注意不包括C2,因为它有不同的调用者序列(A→D→C);
+
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/a4.jpg)
+
++ 聚合方法调用用于创建flame 图，如下图所示。注意，对于任何给定的方法调用，在flame图中，消耗最多CPU时间的callees首先出现;
+
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/a5.jpg)
