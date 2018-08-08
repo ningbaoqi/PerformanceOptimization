@@ -24,3 +24,44 @@
 |performance|很常见的调速器，性能最好也最省电，因为它将CPU频率锁定在设定范围的最大值，无论有多少负载，CPU都全速运行|
 
 + CPU频率高才更省电；
+
+```
+    /**
+     * 在应用程序中调频需要root权限，有root权限的情况下，可以使用以下代码实现调频
+     * 获取当前CPU调度模式
+     */
+    public void getCpuCurGovernor() {
+        try {
+            DataInputStream is = null;
+            Process process = Runtime.getRuntime().exec("cat" + cpuFreqPath + "/scaling_governor");
+            is = new DataInputStream(process.getInputStream());
+            String line = is.readLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 设置CPU调度模式
+     *
+     * @param governor
+     * @return
+     */
+    protected boolean writeCpuGovernor(String governor) {
+        DataOutputStream os = null;
+        byte[] buffer = new byte[256];
+        String command = "echo" + governor + ">" + cpuFreqPath + "/scaling_governor";
+        try {
+            Process process = Runtime.getRuntime().exec("su");
+            os = new DataOutputStream(process.getOutputStream());
+            os.writeBytes(command + "\n");
+            os.writeBytes("exit\n");
+            os.flush();
+            process.waitFor();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+```
