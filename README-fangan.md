@@ -156,3 +156,14 @@ public class JobSchedulerService extends JobService {
 |IDLE_PENDING|IDLE预备状态，准备进入IDLE状态，在每隔30min让应用进入等待空闲预备状态|
 |IDLE|设备进入空闲状态|
 |IDLE_MAINTENANCE|处理挂起任务，在此状态可以执行在INACTIVE态挂起的任务(如闹钟或JobSchedule任务)|
+
+|在Doze模式中的状态进入IDLE时会有以下限制|
+|------|
+|断开网络连接|
+|系统忽略WakeLock|
+|标准闹钟AlarmManager定时任务延迟到下一个maintenance window进行处理，如果应用仍需要在Doze时使用闹钟事件生效，可以使用setAndAllowWhileIdle()或setExactAndAllowWhileIdle()|
+|系统不会扫描热点wifi|
+|禁止同步工作|
+|停止JobScheduler任务调度|
+
++ 一旦点亮了屏幕或插上电源充电，就会退出Doze模式；
