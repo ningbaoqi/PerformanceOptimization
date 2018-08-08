@@ -3,3 +3,4 @@
 
 ![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/a12.jpg)
 
++ 如果网络分析器检测到流量值，但无法识别任何支持的网络请求。将收到以下错误消息：”Network Profiling Data Unavailable: There is no information for the network traffic you’ve selected.;目前，网络分析器只支持HttpURLConnection和OkHttp库。如果您的应用程序使用另一个网络连接库，那么您可能无法在网络分析器中查看您的网络活动;
