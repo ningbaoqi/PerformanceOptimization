@@ -45,3 +45,19 @@
 + 聚合方法调用用于创建flame 图，如下图所示。注意，对于任何给定的方法调用，在flame图中，消耗最多CPU时间的callees首先出现;
 
 ![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/a5.jpg)
+
+##### [使用自上而下和自下而上检查]()
++ Top Down选项卡显示方法调用的列表，扩展方法节点显示其callees;下图所示，在顶部的down选项卡中扩展方法A的节点将显示它的callees、方法B和D;在此之后，扩展方法D的节点将暴露它的callees、方法B和C等等;顶部向下的树聚合跟踪信息，用于共享相同调用堆栈的相同方法。也就是说，火焰图标签提供了顶部下标签的图形表示;Top Down选项卡提供以下信息，以帮助描述在每个方法调用上花费的CPU时间;Self:方法调用用于执行自己的代码而不是它的callees的时间量;Children：方法调用花费的时间用于执行其被调用者，而不是其自己的代码;Total：方法的Self和Children的时间的总和;这表示应用程序执行方法调用的总时间量;
+
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/a6.jpg)
+
++ Bottom Up选项卡显示一个方法调用列表，扩展方法的节点显示其调用者;
+
+![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/a7.jpg)
+
++ Bottom Up选项卡对于那些消耗最多(或最少)CPU时间的方法的排序方法很有用。您可以检查每个节点，以确定哪些调用者在调用这些方法上花费最多的CPU时间。与上面的树相比，底部树中每个方法的定时信息都是在每棵树的顶部(顶部节点)的方法。在记录期间，CPU时间也被表示为线程总时间的百分比;
+
+|名称|Self|Children|Total|
+|------|------|------|------|
+|自下而上树顶部的方法（顶层节点）|表示用于执行其自己的代码而不是其callees的方法的总时间。与上面的树相比，这个时间信息表示在记录期间对该方法的所有调用的总和|表示用于执行callees而不是自己的代码的总时间。与上面的树相比，这个时间信息表示在记录期间对该方法的callees调用的所有调用的总和|Self时间和Children的时间总和|
+|Caller 方法 (子节点)|表示调用者调用callee的总时间。使用上图中的底向上树作为例子，方法B的自我时间将等于每个方法C调用时的Self时间的总和|表示调用者调用的callee的总子时间。在上图中使用底部向上的树为例，方法B的孩子时间将等于每个方法C调用时执行方法C的总和|Self时间和Children的时间总和|
