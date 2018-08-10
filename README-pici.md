@@ -7,3 +7,10 @@ BitmapFactory.Options options = new BitmapFactory.Options();
 options.inPreferredConfig = Bitmap.Config.RGB_565;//通过设置inPreferredConfig参数来实现不同的位图规格
 BitmapFactory.decodeStream(is, null, options);
 ```
+#### [设置图片缩放]()
+
+```
+BitmapFactory.Options options = new BitmapFactory.Options();
+options.inSampleSize = 4;//实现位图的缩放功能
+BitmapFactory.decodeStream(is, null, options);
+```
