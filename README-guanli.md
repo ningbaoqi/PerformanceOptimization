@@ -4,7 +4,7 @@
 
 ![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/IMG20180810141331.jpg)
 
-#### [实现三重缓存]()
+#### [实现三重缓存](https://github.com/ningbaoqi/PerformanceOptimization/commit/0a3498d56b7154283b9aa9c50e3efa567151dca0)
 
 + 内存缓存、本地缓存、网络缓存；
 
