@@ -14,3 +14,16 @@ BitmapFactory.Options options = new BitmapFactory.Options();
 options.inSampleSize = 4;//实现位图的缩放功能
 BitmapFactory.decodeStream(is, null, options);
 ```
+#### [设置图片更细节的缩放]()
+
+```
+BitmapFactory.Options options = new BitmapFactory.Options();
+options.inJustDecodeBounds = true;
+BitmapFactory.decodeStream(is, null, options);
+options.inScaled = true;//系统会按照现有的密度来划分目标密度，但是会有更多的时间开销，会影响图片的显示效果
+options.inDensity = options.outWidth;
+options.inSampleSize = 4;
+options.inTargetDensity = dstWidth * options.inSampleSize;
+options.inJustDecodeBounds = false;
+BitmapFactory.decodeStream(is, null, options);
+```
