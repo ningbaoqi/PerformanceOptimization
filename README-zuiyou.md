@@ -26,3 +26,20 @@
     }
 ```
 #### [LruCache]()
++ LruCache最近最少使用缓存，它用强引用保存需要缓存的对象；当其中的一个值被访问时，它被放到队列的尾部，当缓存将满时，队列头部的值被丢弃，之后可以被垃圾回收；
+
+|LruCache比较重要的方法|说明|
+|------|------|
+|public final V get(K key)|返回cache中key对应的值，调用这个方法后，被访问的值会移动到队列的尾部|
+|publiv final V put(K key , V value)|根据key存放value，存放的value会移动到队列的尾部|
+|protected int sizeOf(K key,V value)|返回每个缓存对象的大小，用来判断缓存是否快满了，这个方法必须重写|
+|protected void entryRemoved(boolean evicted , K key , V oldValue , V newValue)|当一个缓存对象被丢弃时调用的方法，这是一个空方法，可以重写，第一个参数为true：当缓存对象是为了腾出空间而被清理时；第一个参数为false：缓存对象的entry被remove移除或者被put覆盖时|
++ Android的官网也一直推荐使用LruCache作为图片内存缓存，里面保存了一定数量的对象强引用；
+
+|Ｇoogle官方文档给出的建议，分配LruCache大小时考虑应用剩余内存有多大|
+|------|
+|一次屏幕显示多少张图片，有多少张图片是缓存起来准备显示的|
+|考虑设备的分辨路和尺寸，缓存相同的图片数，手机的dpi越大，需要的内存也越大|
+|图片分辨率和像素质量决定了占用内存的大小|
+|图片访问的频繁程度是多少，如果存在多个不同要求的图片类型，可以考虑用多个LruCache来做缓存，按照访问的频率分配到不同的LruCache中|
+||
