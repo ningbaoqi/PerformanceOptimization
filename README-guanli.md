@@ -6,4 +6,6 @@
 
 #### [实现三重缓存]()
 
++ 内存缓存、本地缓存、网络缓存；
+
 ![image](https://github.com/ningbaoqi/PerformanceOptimization/blob/master/gif/IMG20180810154139.jpg)
