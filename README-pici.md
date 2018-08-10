@@ -27,3 +27,5 @@ options.inTargetDensity = dstWidth * options.inSampleSize;
 options.inJustDecodeBounds = false;
 BitmapFactory.decodeStream(is, null, options);
 ```
+#### [设置位图重用]()
++ Android3.0引入了BitmapFactory.Options.inBitmap字段，如果设置了该属性，那么当使用了带有该Options参数的decode方法加载内容时，decode方法会尝试重用一个已经存在的位图，这就意味着位图内存已经被重用了，从而改善了性能，并且没有内存的分配和释放过程；
